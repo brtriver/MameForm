@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+  {% block head %}
+    <title>{% block title %}{% endblock %} - Silex Simple Contact Form</title>
+  {% endblock %}
+</head>
+<body>
+  <div id="content">{% block content %}{% endblock %}</div>
+  <hr>
+  <div id="footer">
+    {% block footer %}
+      MameForm is powerd by Silex and Twig and SwiftMailer4
+    {% endblock %}
+  </div>
+</body>
+</html>

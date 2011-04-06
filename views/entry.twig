@@ -1,0 +1,32 @@
+{% extends "base.twig" %}
+{% block title %}Entry Page{% endblock %}
+{% block content %}
+
+  <h1>Contact Form</h1>
+
+  <ul class="error">
+{% for error in errors %}
+    <li>{{error}}</li>
+{% endfor %}
+  </ul>
+
+  <div id="entryForm">
+      <form method="post" action="{{app.request.baseUrl}}/">
+	    <div id="formName">
+          <label for="Name">Name:</label>
+          <input type="text" name="name" id="Name" value="{{request.get('name')}}">
+        </div>
+        <div id="formEmail">
+          <label for="Email">Email:</label>
+          <input type="text" name="email" id="Email" value="{{request.get('email')}}">
+        </div>
+	    <div id="formMessage">  
+          <label for="Message">Message:</label><br>
+          <textarea name="message" rows="20" cols="20" id="Message">{{request.get('message')}}</textarea>
+         </div>
+         <div>
+          <input type="submit" name="submit" value="Submit" class="submit-button">
+         <div>
+      </form>
+  </div>
+{% endblock %}
