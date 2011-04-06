@@ -15,6 +15,7 @@ MameForm app include .htacees to deny users to access view and vendor files, so 
 get code from GitHub.
 
     git clone git://github.com/brtriver/MameForm.git ./MameForm
+    cd ./MameForm
 	git submodule init
 	git submodule update
 
