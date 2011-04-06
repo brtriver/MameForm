@@ -8,7 +8,7 @@ Silex is based on [Symfony2][1].
 
 Silex works with PHP 5.3.2 or later.
 And if your PHP is compiled with --enable-zend-multibyte, phar doesn't work well.
-MemoForm app include .htacees to deny users to access view and vendor files, so .htaccess is available on the server.
+MameForm app include .htacees to deny users to access view and vendor files, so .htaccess is available on the server.
 
 ## Installation
 
