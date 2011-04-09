@@ -4,6 +4,9 @@ require_once __DIR__.'/vendor/swiftmailer/lib/swift_required.php';
 
 use Silex\Application;
 use Silex\Extension\TwigExtension;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 // define
 define("EMAIL_SUBJECT", 'Email from MameForm');
@@ -57,9 +60,16 @@ $app->before(function() use($app){
 	// assign request parameters to "request" for Twig templates with shorter name
 	$app['twig']->addGlobal('request', $app['request']->request);
 });
+// error (via. Sismo)
+$app->error(function (\Exception $e) use ($app) {
+    $error = null;
+    if ($e instanceof NotFoundHttpException || in_array($app['request']->server->get('REMOTE_ADDR'), array('127.0.0.1', '::1'))) {
+        $error = $e->getMessage();
+    }
+    return new Response(
+        $app['twig']->render('error.twig', array('error' => $error)),
+        $e instanceof HttpExceptionInterface ? $e->getStatusCode() : 500
+    );
+});
 // run app
-try {
-	$app->run();
-}catch (Exception $e) {
-	echo $e->getMessage();
-}
+$app->run();
