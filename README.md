@@ -25,9 +25,9 @@ If you need, you have to change .htaccess file.
 
 You have to change the define in index.php.
 
-    // define
-    define("EMAIL_SUBJECT", 'Email from MameForm');
-    define("EMAIL_ADDRESS_FROM", 'example@example.com');
+    // set your mailer config.
+    $app['mailer.subject'] = "Email from MameForm";
+    $app['mailer.address_from'] = "example@example.com";
 
 If you can change the mail body, you have only to modify the mail.twig.
 
