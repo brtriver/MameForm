@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/silex.phar';
+require_once __DIR__.'/silex.phar';
 require_once __DIR__.'/vendor/swiftmailer/lib/swift_required.php';
 
 use Silex\Application;
